@@ -100,7 +100,7 @@ client.on('message', function(message) {
 
 
 client.on('message', message => {
- if (message.content.startsWith('memberss')) {
+ if (message.content.startsWith('MB')) {
   var norElden= new Discord.RichEmbed()
   .addField('اسم السيرفر ',` **__${message.guild.name}__**`)
       .addField('عدد الاعضاء',`**__${message.guild.memberCount}__**`)
@@ -122,7 +122,7 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
 });
 
     client.on('message' , message => {
-        if(message.content === 'Voice Online') {
+        if(message.content === 'VO') {
             message.channel.send(`**عدد الاشخاص الموجودين بـ  الرومات الصوتيه : ${message.guild.members.filter(g => g.voiceChannel).size}**`);
         }
         });
