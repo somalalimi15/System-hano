@@ -286,7 +286,7 @@ client.on('message', message => {
   let args = message.content.split(" ").slice(1);
 
 if (command == "say") {
-if(!message.guild.member(message.author).hasPermission("MANAGE_MESSAGES")) return message.reply("*لا تملك الصلاحيات المطلوبه**");
+if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply("*لا تملك الصلاحيات المطلوبه**");
 
 message.channel.send(args.join("  "))
     message.delete();
