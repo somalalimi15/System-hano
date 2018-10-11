@@ -11,80 +11,24 @@ const yt = require('ytdl-core');
 
 const prefix = '^'
 
-Rocket.on('message', message => {//unmute
-    if (message.content.startsWith('unmutee')) {
-  if (!message.member.hasPermission("MANAGE_CHANNELS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
-   let men = message.mentions.users.first()
-   let mas = message.author
-   if(!men) return message.channel.send('`**منشن الشخص الذي تريد فك الميوت عنه** `');
-   message.guild.channels.forEach(c => {
-   c.overwritePermissions(men.id, {
-           SEND_MESSAGES: true
-           })
-      })
-  const embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setDescription(`**
-   <@${men.id}>
-  تم فك الميوت الكتابي
-  بواسطة : <@${message.author.id}> **`)
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', '😀║chatting・');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return; 
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
+        .addField('**:id: | user :**', "**[" + `${member.id}` + "]**" )
+        .addField('**➡| انت العضو رقم**',`${member.guild.memberCount}`)
+        .addField(':** دخولك لديسكورد قبل**', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true)
+        .addField("**Name:**",`<@` + `${member.id}` + `>`, true)
 
-  Rocket.users.get(men.id).sendEmbed(embed)
-  const Embed11 = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setAuthor(message.guild.name, message.guild.iconURL)
-  .setDescription(`          <@${men.id}>
-  تم فك الميوت الكتابي
-  بواسطة : <@${message.author.id}> `)
- 
-  message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
-      }
-});
-Rocket.on('message', message => {//mute
-    if (message.content.startsWith('mutee')) {
-  if (!message.member.hasPermission("MOVE_MEMBERS")) return message.channel.send("**انت لا تمتلك الخاصيه المطلوبه** | ❎ ");
-  let men = message.mentions.users.first()
-  let mas = message.author
-  if(!men) return message.channel.send('`منشن الشخص الذي تريد ان تعطيه ميوت كتابي` ');
-  message.guild.channels.forEach(c => {
-  c.overwritePermissions(men.id, {
-            SEND_MESSAGES: false
-  })
-      })
-  const embed = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setDescription(`**
-   <@${men.id}>
-  لقد تم اعطائك ميوت كتابي
-  بواسطة : <@${message.author.id}> **`)
-  
-
-  Rocket.users.get(men.id).sendEmbed(embed)
-  const Embed11 = new Discord.RichEmbed()
-  .setColor("RANDOM")
-  .setAuthor(message.guild.name, message.guild.iconURL)
-  .setDescription(`          <@${men.id}>
-  لقد تم اعطائه الميوت الكتابي بنجاح
-  بواسطة : <@${message.author.id}> `)
- 
-  message.channel.sendEmbed(Embed11).then(message => {message.delete(20000)})
-      }
-
-
-
-Rocket.on('message', message => {//restart
-    if(message.content === adminprefix + "إعادة") {
-          if (!devs.includes(message.author.id)) return;
-              message.channel.send(`⚠️ **الشخص الذي اعاد تشغيل البوت ${message.author.username}**`);
-            console.log(`⚠️ جاري اعادة تشغيل البوت... ⚠️`);
-            Rocket.destroy();
-            child_process.fork(__dirname + "/bot.js");
-            console.log(`تم اعادة تشغيل البوت`);
-        }
-
-
+        .setTimestamp()
+    
+      channel.sendEmbed(embed);
     });
-});
+    
 
  
         client.on('message', message => {
