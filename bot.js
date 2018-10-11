@@ -95,8 +95,13 @@ client.on('guildMemberAdd', member => {
         .setThumbnail(memberavatar)
         .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
         .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
-        .addField("Name:",`<@` + `${member.id}` + `>`, true)
-
+        .addField("Name:",`<@` + `${member.id}` + `>`, true)]
+	
+        .setTimestamp()
+    
+      channel.sendEmbed(embed);
+    });
+    
     
     
         client.on('message', message => {
@@ -130,12 +135,8 @@ message.channel.send(id)
 }       });              
                                   
                                        
-     .setFooter("**SERVER NAME **")
-        .setTimestamp()
-    
-      channel.sendEmbed(embed);
-    });
-    
+
+
 
 client.on('message', function(message) {
     if (!message.member.hasPermissions(['ADMINISTRATOR'])){
