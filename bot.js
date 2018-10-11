@@ -4,6 +4,26 @@ const client = new Discord.Client();
 
 const prefix = '^'
 
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', '😀║chatting・');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return; 
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
+               
+                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
+                      
+                                  
+                                       
+     .setFooter("**SERVER NAME **")
+        .setTimestamp()
+    
+      channel.sendEmbed(embed);
+    });
+    
 
 client.on('message', function(message) {
     if (!message.member.hasPermissions(['ADMINISTRATOR'])){
