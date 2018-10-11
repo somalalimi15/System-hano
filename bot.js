@@ -122,7 +122,6 @@ message.channel.send(id)
 
 
 client.on('message', function(message) {
-    if (!message.member.hasPermissions(['ADMINISTRATOR'])){
             let command = message.content.split(" ")[0];
         if(message.content.includes('discord.gg')){
         message.reply (' ')
