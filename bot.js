@@ -86,24 +86,7 @@ Rocket.on('message', message => {//restart
     });
 });
 
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', '😀║chatting・');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return; 
-    let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(memberavatar)
-        .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
-        .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
-        .addField("Name:",`<@` + `${member.id}` + `>`, true)]
-	
-        .setTimestamp()
-    
-      channel.sendEmbed(embed);
-    });
-    
-    
-    
+ 
         client.on('message', message => {
     if (message.content.startsWith(prefix + "هويتي")) {
 var args = message.content.split(" ").slice(1);
