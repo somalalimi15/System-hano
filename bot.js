@@ -21,7 +21,6 @@ client.on('guildMemberAdd', member => {
         .addField(':running_shirt_with_sash: | name :  ',`${member}`)
         .addField('**:id: | user :**', "**[" + `${member.id}` + "]**" )
         .addField('**➡| انت العضو رقم**',`${member.guild.memberCount}`)
-        .addField(':** دخولك لديسكورد قبل**', `${moment(heg.createdTimestamp).format('YYYY/M/D HH:mm:ss')} **\n** \`${moment(heg.createdTimestamp).fromNow()}\`` ,true)
         .addField("**Name:**",`<@` + `${member.id}` + `>`, true)
 
         .setTimestamp()
