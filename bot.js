@@ -4,7 +4,10 @@ const client = new Discord.Client();
 
 const prefix = '^'
 
+client.on('guildMemberAdd', member=> {
 
+    client.channels.get("498032118547349514").send(`** Welcome To __ Hano __ Server .'${member} **`);
+    });
 
 client.on('message', async message => {
   let args = message.content.split(" ");
