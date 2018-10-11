@@ -47,7 +47,25 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You N
 });
 	
 	
-	
+  client.on('message',async message => {
+    if(message.content.startsWith(prefix + "setCount")) {
+    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('? **��� ���� ��������� �������**');
+    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('? **��� ��� ��������� ��??����**');
+    message.channel.send('?| **�� ��� ����� �����**');
+    message.guild.createChannel(`Members Count : [ ${message.guild.members.size} ]` , 'voice').then(c => {
+      console.log(`Count Members channel setup for guild: \n ${message.guild.name}`);
+      c.overwritePermissions(message.guild.id, {
+        CONNECT: false,
+        SPEAK: false
+      });
+      setInterval(function() {
+        c.setName(`Members Count : [ ${message.guild.members.size} ]`)
+      },1000);
+    });
+    }
+  });
+
+
 	client.on('message',async message => {
     if(message.content.startsWith(prefix + "setVoice")) {
     if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('? **��� ���� ��������� �������**');
@@ -67,6 +85,18 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You N
   });
   
   
+client.on('message', function(message) {
+    if (message.content == "مسح") {
+        if (message.member.hasPermission("MANAGE_MESSAGES")) {
+            message.channel.fetchMessages()
+               .then(function(list){
+                    message.channel.bulkDelete(list);
+                }, function(err){message.channel.send("ERROR: ERROR CLEARING CHANNEL.")})
+        }
+    }
+
+});
+
   client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`System | Hano .`,"http://twitch.tv/S-F")
