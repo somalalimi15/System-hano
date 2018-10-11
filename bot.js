@@ -9,7 +9,23 @@ const jimp = require("jimp");// npm i jimp
 const package = ('package.json');
 const yt = require('ytdl-core');
 
-const prefix = '$'
+const prefix = '%'
+
+
+client.on('message', msg => {
+if (msg.content.startsWith(`sug`)) {
+// تعريف الارجس
+   let args = msg.content.split(" ").slice(1);
+// لو ما منشن احد يرد عيله
+  if (!args[1]) return msg.reply(`**اكتب اقتراحك**`)
+// استبدل <الروم> بأسم الروم حقك
+    msg.guild.channels.find('name', 'suggests').send(`
+  صاحب الاقتراح  : ${msg.member}
+  الاقتراح : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
+  `)
+  }
+})
+
 
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', '😀║chatting・');
