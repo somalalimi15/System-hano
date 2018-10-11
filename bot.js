@@ -9,7 +9,7 @@ const jimp = require("jimp");// npm i jimp
 const package = ('package.json');
 const yt = require('ytdl-core');
 
-const prefix = '^'
+const prefix = '$'
 
 client.on('guildMemberAdd', member => {
     let channel = member.guild.channels.find('name', '😀║chatting・');
@@ -18,8 +18,8 @@ client.on('guildMemberAdd', member => {
     let embed = new Discord.RichEmbed()
         .setColor('RANDOM')
         .setThumbnail(memberavatar)
-        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
-        .addField('**:id: | user :**', "**[" + `${member.id}` + "]**" )
+        .addField('** __Name__ : ** ',`${member}`)
+        .addField('** __User__ : **', "**[" + `${member.id}` + "]**" )
         .addField('**➡| انت العضو رقم**',`${member.guild.memberCount}`)
         .addField("**Name:**",`<@` + `${member.id}` + `>`, true)
 
@@ -31,7 +31,7 @@ client.on('guildMemberAdd', member => {
 
  
         client.on('message', message => {
-    if (message.content.startsWith(prefix + "هويتي")) {
+    if (message.content.startsWith(prefix + "id")) {
 var args = message.content.split(" ").slice(1);
 let user = message.mentions.users.first();
 var men = message.mentions.users.first();
@@ -87,12 +87,12 @@ client.on('message', function(message) {
 
 client.on('guildMemberAdd', member=> {
 
-    client.channels.get("498032118547349514").send(`** Welcome To __ Hano __ Server .'${member} **`);
+    client.channels.get("498032118547349514").send(`** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts: :fallen_leaf: .**`);
     });
 
 client.on('message', async message => {
   let args = message.content.split(" ");
-  if(message.content.startsWith(prefix + "ميوت")) {
+  if(message.content.startsWith(prefix + "mute")) {
     if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.send('').then(msg => {
       msg.delete(3500);
       message.delete(3500);
@@ -248,23 +248,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('You N
 });
 	
 	
-  client.on('message',async message => {
-    if(message.content.startsWith(prefix + "setCount")) {
-    if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('? **��� ���� ��������� �������**');
-    if(!message.guild.member(client.user).hasPermissions(['MANAGE_CHANNELS','MANAGE_ROLES_OR_PERMISSIONS'])) return message.reply('? **��� ��� ��������� ��??����**');
-    message.channel.send('?| **�� ��� ����� �����**');
-    message.guild.createChannel(`Members Count : [ ${message.guild.members.size} ]` , 'voice').then(c => {
-      console.log(`Count Members channel setup for guild: \n ${message.guild.name}`);
-      c.overwritePermissions(message.guild.id, {
-        CONNECT: false,
-        SPEAK: false
-      });
-      setInterval(function() {
-        c.setName(`Members Count : [ ${message.guild.members.size} ]`)
-      },1000);
-    });
-    }
-  });
 
 
   
@@ -354,7 +337,7 @@ client.on('voiceStateUpdate', (o,n) => {
     if (n.voiceChannel && !o.voiceChannel) {
         ss+=1
         n.guild.channels.get("499987034484637711").edit({
-            name : "Voice Online : [" + ss+ "]"
+            name : "#Hano Online : [" + ss+ "]"
         })
     }
 })
@@ -364,11 +347,24 @@ client.on("ready", () => {
             ss+=1
         };
         client.channels.get("499987034484637711").edit({
-            name : "Voice Online : [" + ss+ "]"
+            name : "# Hano Online : [" + ss+ "]"
         })
     });
 });
 
+  client.on('message', async message => {
+  if(message.content.startsWith(prefix + "sug")) {
+  await  message.channel.send(`**إقـرآح جـديد ..`)
+      var text = '';
+        let sugsa = message.channel.awaitMessages(m => m.author.id === message.author.id, { max: 1, time: 60000})
+          .then(co => {
+            text = co.first().content
+              message.channel.send(`�� ��� ������� ������ ������ ���� �� ��� �������`)
+                client.channels.get("500069103021588500").send(`${message.author.username}'s sug => ${text}`)
+
+              })
+            }
+          });
 
   client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
