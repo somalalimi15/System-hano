@@ -347,13 +347,13 @@ client.on('voiceStateUpdate', (o,n) => {
     if (o.voiceChannel && !n.voiceChannel) {
         ss-=1
         n.guild.channels.get("499987034484637711").edit({
-            name : "Voice Online : [" + ss+ "]"
+            name : "# Hano Online : [" + ss+ "]"
         })
     };
     if (n.voiceChannel && !o.voiceChannel) {
         ss+=1
         n.guild.channels.get("499987034484637711").edit({
-            name : "#Hano Online : [" + ss+ "]"
+            name : "# Hano Online : [" + ss+ "]"
         })
     }
 })
