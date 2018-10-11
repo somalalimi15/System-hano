@@ -97,6 +97,47 @@ client.on('message', function(message) {
 
 });
 
+
+
+client.on('message', message => {
+ if (message.content.startsWith('memberss')) {
+  var norElden= new Discord.RichEmbed()
+  .addField('اسم السيرفر ',` **__${message.guild.name}__**`)
+      .addField('عدد الاعضاء',`**__${message.guild.memberCount}__**`)
+  .setColor('RANDOM')
+message.channel.send({ embed: norElden });
+  }
+});
+
+
+client.on('message', message => {
+  if (!message.content.startsWith(prefix)) return;
+  const verifed = ["368768446327947265"];
+if (message.content.startsWith(prefix + 'own')) {
+if( verifed.some(word => message.author.id.includes(word)) ) {    return message.channel.sendMessage(`**   جا صاحب البوت هنا الكل يوقف**` + `✅`)
+} else {
+   message.reply('**انت لست صاحب البوت**' + '❌');   
+}
+}
+});
+
+    client.on('message' , message => {
+        if(message.content === 'Voice Online') {
+            message.channel.send(`**عدد الاشخاص الموجودين بـ  الرومات الصوتيه : ${message.guild.members.filter(g => g.voiceChannel).size}**`);
+        }
+        });
+
+  client.on('message', message => {
+    if(message.content.includes('discord.gg')){
+                                            if(!message.channel.guild) return message.reply('** ..ممنوع النشـر **');
+        if (!message.member.hasPermissions(['ADMINISTRATOR'])){
+        message.delete()
+    return message.reply(`**ممـنوع آلـنشر هـنآ .. وشـكرآ**`)
+    }
+}
+});
+  
+
   client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(`System | Hano .`,"http://twitch.tv/S-F")
