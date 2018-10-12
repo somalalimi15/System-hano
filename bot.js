@@ -14,7 +14,7 @@ const prefix = '$'
 client.on('ready', () => {
     client.channels.find(c => c.id === '498031672286248970').join();
 });
-
+ 
 
 client.on('message', msg => {
 if (msg.content.startsWith(`$sug`)) {
