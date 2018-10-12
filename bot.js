@@ -27,23 +27,7 @@ if (msg.content.startsWith(`$sug`)) {
 })
 
 
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', '😀║chatting・');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return; 
-    let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(memberavatar)
-        .addField('** __Name__ : ** ',`${member}`)
-        .addField('** __User__ : **', "**[" + `${member.id}` + "]**" )
-        .addField('**➡| انت العضو رقم**',`${member.guild.memberCount}`)
-        .addField("**Name:**",`<@` + `${member.id}` + `>`, true)
 
-        .setTimestamp()
-    
-      channel.sendEmbed(embed);
-    });
-    
 
  
         client.on('message', message => {
@@ -83,7 +67,7 @@ message.channel.send(id)
 
 client.on('guildMemberAdd', member=> {
 
-    client.channels.get("498032118547349514").send(`** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts:  .** | **آنـت عـضو رقـم **:__ ${member.guild.memberCount}__`);
+    client.channels.get("498032118547349514").send(`** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts:  .** | **آنـت عـضو رقـم **:**__ ${member.guild.memberCount}__**`);
     });
 
 client.on('message', async message => {
