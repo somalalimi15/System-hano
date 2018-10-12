@@ -9,19 +9,19 @@ const jimp = require("jimp");// npm i jimp
 const package = ('package.json');
 const yt = require('ytdl-core');
 
-const prefix = '%'
+const prefix = '$'
 
 
 client.on('message', msg => {
-if (msg.content.startsWith(`sug`)) {
+if (msg.content.startsWith(`$sug`)) {
 // تعريف الارجس
    let args = msg.content.split(" ").slice(1);
 // لو ما منشن احد يرد عيله
-  if (!args[1]) return msg.reply(`**اكتب اقتراحك**`)
+  if (!args[1]) return msg.reply(`**اكتب اقتراحك .. **`)
 // استبدل <الروم> بأسم الروم حقك
     msg.guild.channels.find('name', 'suggests').send(`
-  صاحب الاقتراح  : ${msg.member}
-  الاقتراح : **${args.join(" ").split(msg.mentions.members.first()).slice(' ')}**
+  **صاحب الاقتراح ** :**__ ${msg.member} __**
+ ** الاقتراح** : **__${args.join(" ").split(msg.mentions.members.first()).slice(' ')}__**
   `)
   }
 })
@@ -80,30 +80,10 @@ message.channel.send(id)
 
 
 
-client.on('message', function(message) {
-            let command = message.content.split(" ")[0];
-        if(message.content.includes('discord.gg')){
-        message.reply (' ')
-           if(!message.channel.guild) return message.reply('**ممـنوع نشـر الروآبـط في سيـرفرنا | وشـكرآ . .**');
-     message.member.addRole(message.guild.roles.find('name', 'Muted')); 
-    const embed500 = new Discord.RichEmbed()
-      .setTitle("**:x: | تمـت معـآقبتك**")
-            .addField(`** لقد قمت بمخالفة قوانين السيرفر من خلال نشر سيرفرات اخرى  **` , `**ملاحظة  : إن كآن هذآ الميوت عن طريق الخطأ تكلم مع الادآرة**`)
-      .addField(`by`,`SoM ' `)
-            .setColor("c91616")
-            .setThumbnail(`${message.author.avatarURL}`)
-            .setAuthor(message.author.username, message.author.avatarURL) 
-        .setFooter(`${message.guild.name} Server`)
-     message.channel.send(embed500) 
-    
-        
-    }
-})
-
 
 client.on('guildMemberAdd', member=> {
 
-    client.channels.get("498032118547349514").send(`** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts: :fallen_leaf: .**`);
+    client.channels.get("498032118547349514").send(`** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts:  .** | **آنـت عـضو رقـم **:__ ${member.guild.memberCount}__`);
     });
 
 client.on('message', async message => {
