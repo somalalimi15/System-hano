@@ -22,7 +22,7 @@ const prefix = '$'
 
 client.on('guildMemberAdd', member=> {
 
-    client.channels.get("498032118547349514").send(` ** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts:  .** | **آنـت عـضو رقـم **:**__ ${member.guild.memberCount}__** `);
+    client.channels.get("498032118547349514").send(` __ ${member} __| **Welcome To __Hano__ Server , :hearts: **.| **You ِAre A Member , ** ..  __ ${member.guild.memberCount}__ , ! `);
     });
 
 const invites = {};
@@ -49,7 +49,7 @@ client.on('guildMemberAdd', member => {
    
     const channel = member.guild.channels.find(c => c.name === "😀║chatting・");
    
-    channel.send(`**${member} invited by ${inviter}. **`);
+    channel.send(`**Invited By : __${inviter}.__ **`);
   });
 });
 
