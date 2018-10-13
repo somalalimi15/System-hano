@@ -16,7 +16,6 @@ const queue = new Map();
 const ytdl = require('ytdl-core');
 const dateFormat = require('dateformat');
 
-let profile = JSON.parse(fs.readFileSync("profile.json", "utf8"))
 
 
 const prefix = '$'
@@ -304,13 +303,13 @@ var ss = 0;
 client.on('voiceStateUpdate', (o,n) => {
     if (o.voiceChannel && !n.voiceChannel) {
         ss-=1
-        n.guild.channels.get("499987034484637711").edit({
+        n.guild.channels.get("500673959956840448").edit({
             name : "# Hano Online : [" + ss+ "]"
         })
     };
     if (n.voiceChannel && !o.voiceChannel) {
         ss+=1
-        n.guild.channels.get("499987034484637711").edit({
+        n.guild.channels.get("500673959956840448").edit({
             name : "# Hano Online : [" + ss+ "]"
         })
     }
@@ -320,7 +319,7 @@ client.on("ready", () => {
         if (m.voiceChannel) {
             ss+=1
         };
-        client.channels.get("499987034484637711").edit({
+        client.channels.get("500673959956840448").edit({
             name : "# Hano Online : [" + ss+ "]"
         })
     });
@@ -940,45 +939,7 @@ client.on('message' , message => {
 }); 
 
 
-client.on('message', message => {
-  var prefix = "#";
-if (message.author.x5bz) return;
-if (!message.content.startsWith(prefix)) return;
 
-let command = message.content.split(" ")[0];
-command = command.slice(prefix.length);
-
-let args = message.content.split(" ").slice(1);
-
-if (command == "باند") {
-             if(!message.channel.guild) return message.reply('** This command only for servers**');
-       
-if(!message.guild.member(message.author).hasPermission("BAN_MEMBERS")) return message.reply("**You Don't Have ` BAN_MEMBERS ` Permission**");
-if(!message.guild.member(client.user).hasPermission("BAN_MEMBERS")) return message.reply("**I Don't Have ` BAN_MEMBERS ` Permission**");
-let user = message.mentions.users.first();
-let reason = message.content.split(" ").slice(2).join(" ");
-/*let b5bzlog = client.channels.find("name", "5bz-log");
-
-if(!b5bzlog) return message.reply("I've detected that this server doesn't have a 5bz-log text channel.");*/
-if (message.mentions.users.size < 1) return message.channel.send(`https://cdn.pg.sa/fjxlms81nk.png`);
-if(!reason) return message.channel.send(`https://cdn.pg.sa/fjxlms81nk.png`);
-if (!message.guild.member(user)
-.bannable) return message.reply(`This User Is Have High Role !`);
-
-message.guild.member(user).ban(7, user);
-
-const banembed = new Discord.RichEmbed()
-.setAuthor(`BANNED!`, user.displayAvatarURL)
-.setColor("RANDOM")
-.setTimestamp()
-.addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
-.addField("**By:**", '**[ ' + `${message.author.tag}` + ' ]**')
-.addField("**Reason:**", '**[ ' + `${reason}` + ' ]**')
-message.channel.send({
-  embed : banembed
-})
-}
-});
 client.on('message', message => {
 if(message.content.startsWith(prefix +"server")){
 if(!message.guild.member(message.author).hasPermission("ADMINISTRATOR")) return message.reply(`**هذه الخاصية للادارة فقط** :negative_squared_cross_mark: `)
