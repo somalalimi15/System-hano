@@ -22,7 +22,7 @@ const prefix = '$'
 
 client.on('guildMemberAdd', member=> {
 
-    client.channels.get("498032118547349514").send(` ** ${member} **| **Welcome To __Hano__ Server , :hearts: **.| **You ِAre A Member , ** .. ** ${member.guild.memberCount}  , !** `);
+    client.channels.get("498032118547349514").send(` ** ${member} **| **Welcome To __Hano__ Server , :hearts: **.| **You ِAre A Member , ** .. **__ ${member.guild.memberCount} __ , !** `);
     });
 
 const invites = {};
