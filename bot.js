@@ -20,6 +20,11 @@ const prefix = '$'
 
 
 
+client.on('guildMemberAdd', member=> {
+
+    client.channels.get("498032118547349514").send(` ${inviter}. . ** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts:  .** | **آنـت عـضو رقـم **:**__ ${member.guild.memberCount}__** `);
+    });
+
 const invites = {};
  
 // ذا زي  setTimeout لاكن عشان ما يخرب الشكل
@@ -42,7 +47,7 @@ client.on('guildMemberAdd', member => {
    
     const inviter = client.users.get(invite.inviter.id);
    
-    const channel = member.guild.channels.find(c => c.name === "سوالف");
+    const channel = member.guild.channels.find(c => c.name === "😀║chatting・");
    
     channel.send(`**${member} invited by ${inviter}. **`);
   });
@@ -162,11 +167,6 @@ client.on('message', msg => {
 
 
 
-
-client.on('guildMemberAdd', member=> {
-
-    client.channels.get("498032118547349514").send(` ${inviter}. . ** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts:  .** | **آنـت عـضو رقـم **:**__ ${member.guild.memberCount}__** `);
-    });
 
 
 
