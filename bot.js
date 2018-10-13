@@ -20,6 +20,32 @@ const dateFormat = require('dateformat');
 
 const prefix = '$'
 
+var ss = 0;
+ 
+client.on('voiceStateUpdate', (o,n) => {
+    if (o.voiceChannel && !n.voiceChannel) {
+        ss-=1
+        n.guild.channels.get("500673959956840448").edit({
+            name : "# Hano Online : [" + ss+ "]"
+        })
+    };
+    if (n.voiceChannel && !o.voiceChannel) {
+        ss+=1
+        n.guild.channels.get("500673959956840448").edit({
+            name : "# Hano Online : [" + ss+ "]"
+        })
+    }
+})
+client.on("ready", () => {
+    client.guilds.get("491674187870502940").members.forEach(m => {
+        if (m.voiceChannel) {
+            ss+=1
+        };
+        client.channels.get("500673959956840448").edit({
+            name : "# Hano Online : [" + ss+ "]"
+        })
+    });
+});
 
 
 client.on('guildMemberAdd', member=> {
