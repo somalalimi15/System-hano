@@ -18,6 +18,38 @@ const ytdl = require('ytdl-core');
 
 const prefix = '$'
 
+
+
+const invites = {};
+ 
+// ذا زي  setTimeout لاكن عشان ما يخرب الشكل
+const wait = require('util').promisify(setTimeout);
+ 
+client.on('ready', () => {
+  wait(1000);
+  client.guilds.forEach(g => {
+    g.fetchInvites().then(gi => {
+      invites[g.id] = gi;
+    });
+  });
+});
+client.on('guildMemberAdd', member => {
+  if(member.bot) return;
+  member.guild.fetchInvites().then(gi => {
+    const ei = invites[member.guild.id];
+   
+    const invite = gi.find(i => ei.get(i.code).uses < i.uses);
+   
+    const inviter = client.users.get(invite.inviter.id);
+   
+    const channel = member.guild.channels.find(c => c.name === "سوالف");
+   
+    channel.send(`**${member} invited by ${inviter}. **`);
+  });
+});
+
+
+
 client.on('ready', () => {
     client.channels.find(c => c.id === '498031672286248970').join();
 });
