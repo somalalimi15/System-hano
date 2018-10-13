@@ -299,7 +299,7 @@ if( verifed.some(word => message.author.id.includes(word)) ) {    return message
 
   client.on('message', message => {
     if(message.content.includes('discord.gg')){
-                                            if(!message.channel.guild) return message.reply('** ..ممنوع النشـر **');
+                                            if(!message.channel.guild) return message.reply('**```Hano Server```.**');
         if (!message.member.hasPermissions(['ADMINISTRATOR'])){
         message.delete()
     return message.reply(`**ممـنوع آلـنشر هـنآ .. وشـكرآ**`)
