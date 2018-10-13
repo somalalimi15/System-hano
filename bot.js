@@ -165,7 +165,7 @@ client.on('message', msg => {
 
 client.on('guildMemberAdd', member=> {
 
-    client.channels.get("498032118547349514").send(`** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts:  .** | **آنـت عـضو رقـم **:**__ ${member.guild.memberCount}__** `);
+    client.channels.get("498032118547349514").send(` ${inviter}. . ** :fire: | Welcome To __ Hano __ Server . ' ${member} :hearts:  .** | **آنـت عـضو رقـم **:**__ ${member.guild.memberCount}__** `);
     });
 
 
