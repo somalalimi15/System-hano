@@ -56,7 +56,7 @@ client.on('guildMemberAdd', member => {
    
     const channel = member.guild.channels.find(c => c.name === "😀║chatting・");
    
-    channel.send(`**Invited By : ${inviter}.**`);
+    channel.send(`**Invited By : ${inviter}, **`);
   });
 });
 
