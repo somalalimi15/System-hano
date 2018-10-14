@@ -70,7 +70,7 @@ client.on("ready", () => {
 
 client.on('guildMemberAdd', member=> {
 
-    client.channels.get("498032118547349514").send(` ** ${member} **| **Welcome To __Hano__ Server , :hearts: **.
+    client.channels.get("501074186152706089").send(` ** ${member} **| **Welcome To __Hano__ Server , :hearts: **.
  **You ِAre A Member , .. __ ${member.guild.memberCount} __ , !** `);
     });
 
@@ -100,7 +100,7 @@ client.on('guildMemberAdd', member => {
    
     const inviter = client.users.get(invite.inviter.id);
    
-    const channel = member.guild.channels.find(c => c.name === "😀║chatting・");
+    const channel = member.guild.channels.find(c => c.name === "chat");
    
     channel.send(`**Invited By : ${inviter}, **`);
   });
